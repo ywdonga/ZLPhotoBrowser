@@ -252,6 +252,8 @@ public class ZLPhotoConfiguration: NSObject {
     /// The second parameter is the block that needs to be called after the user completes the operation.
     @objc public var operateBeforeDoneAction: ((UIViewController, @escaping () -> Void) -> Void)?
     
+    /// 选择图片是否强制裁剪
+    @objc public var xdIsForcedClip = false
 }
 
 @objc public enum ZLNoAuthorityType: Int {

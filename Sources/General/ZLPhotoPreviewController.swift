@@ -594,7 +594,11 @@ class ZLPhotoPreviewController: UIViewController {
             zlLoggerInDebug("Navigation controller is null")
             return
         }
-        
+        if ZLPhotoConfiguration.default().xdIsForcedClip,
+           let noEditEnum = arrDataSources.enumerated().filter({$1.editImageModel == nil}).first {
+            showAlertView("第\(noEditEnum.0 + 1)张图片没有编辑，请点击编辑按钮进行编辑", self)
+            return
+        }
         func callBackBeforeDone() {
             if let block = ZLPhotoConfiguration.default().operateBeforeDoneAction {
                 block(self) { [weak nav] in

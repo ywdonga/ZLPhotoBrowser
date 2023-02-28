@@ -492,6 +492,10 @@ class ZLThumbnailViewController: UIViewController {
     }
     
     @objc private func doneBtnClick() {
+        guard !ZLPhotoConfiguration.default().xdIsForcedClip else {
+            previewBtnClick()
+            return
+        }
         let nav = navigationController as? ZLImageNavController
         if let block = ZLPhotoConfiguration.default().operateBeforeDoneAction {
             block(self) { [weak nav] in

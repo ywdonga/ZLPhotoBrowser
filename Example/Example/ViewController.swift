@@ -100,6 +100,13 @@ class ViewController: UIViewController {
             make.top.equalTo(cameraBtn.snp.bottom).offset(20)
         }
         
+        let selfDemoBtn = createBtn("self Demo", #selector(swelfDemo))
+        view.addSubview(selfDemoBtn)
+        selfDemoBtn.snp.makeConstraints { make in
+            make.left.equalTo(wechatMomentDemoBtn.snp.right).offset(20)
+            make.centerY.equalTo(wechatMomentDemoBtn.snp.centerY)
+        }
+        
         let takeLabel = UILabel()
         takeLabel.font = UIFont.systemFont(ofSize: 14)
         takeLabel.textColor = .black
@@ -374,6 +381,11 @@ class ViewController: UIViewController {
     
     @objc func createWeChatMomentDemo() {
         let vc = WeChatMomentDemoViewController()
+        show(vc, sender: nil)
+    }
+    
+    @objc func swelfDemo() {
+        let vc = SelfDemoVC()
         show(vc, sender: nil)
     }
 }
